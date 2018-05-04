@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
+
+class WechatPipeline(object):
+    def process_item(self, item, spider):
+        with open('/home/hya/scrapy/wechat/wechat1.log', 'a') as fp:
+            fp.write('title:'+item['name'].encode('utf-8')+ '\ntime:'+ item['time'].encode('utf-8')+'\nstract:'+item['summary'].encode('utf-8')+'\n\n\n')
+        return item
